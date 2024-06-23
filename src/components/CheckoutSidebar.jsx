@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 const CheckoutSidebar = () => {
+  const {total} = useContext(CartContext)
+
   return (
     <aside>
-      <h1>Total</h1>
       <div className="sub-total-and-amount-box">
-        <h3>Sub Total</h3>
-        <p>amount</p>
+        <h1>Total</h1>
+        <p>${parseFloat(total).toFixed(2)}</p>
       </div>
       <div className="promo-code-box">
         <label htmlFor="promo code">Promo Code:</label>

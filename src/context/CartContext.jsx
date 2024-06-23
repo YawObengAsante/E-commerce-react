@@ -1,11 +1,33 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // Create context
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  // cart states
+  // cart state
   const [cart, setCart] = useState([]);
+  // item amount state
+  const [itemAmount, setItemAmount] = useState(0);
+  // total price state
+  const [total, setTotal] = useState(0);
+
+  // update total price
+  useEffect(() => {
+    const total = cart.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.price * currentItem.amount;
+    }, 0);
+    setTotal(total);
+  });
+
+  // update item amount
+  useEffect(() => {
+    if (cart) {
+      const amount = cart.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.amount;
+      }, 0);
+      setItemAmount(amount);
+    }
+  }, [cart]);
 
   // add item to cart
   const addToCart = (item, id) => {
@@ -18,7 +40,7 @@ const CartContextProvider = ({ children }) => {
     if (cartItem) {
       const newCart = [...cart].map((item) => {
         if (item.id === id) {
-          return { ...item, amount: cartItem.amount + 1 };
+          return { ...item, amount: item.amount + 1 };
         } else {
           return item;
         }
@@ -31,10 +53,10 @@ const CartContextProvider = ({ children }) => {
 
   // remove item from cart
   const removeFromCart = (id) => {
-      const filteredItem = cart.filter((item) => {
-        return item.id !== id;
-      });
-      setCart(filteredItem);
+    const filteredItem = cart.filter((item) => {
+      return item.id !== id;
+    });
+    setCart(filteredItem);
   };
 
   // increase amount
@@ -51,7 +73,7 @@ const CartContextProvider = ({ children }) => {
     if (cartItem) {
       const newCart = cart.map((item) => {
         if (item.id === id) {
-          return { ...item, amount: cartItem.amount - 1 };
+          return { ...item, amount: item.amount - 1 };
         } else {
           return item;
         }
@@ -77,6 +99,8 @@ const CartContextProvider = ({ children }) => {
         removeFromCart,
         increaseAmount,
         decreaseAmount,
+        itemAmount,
+        total,
       }}
     >
       {children}
