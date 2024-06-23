@@ -3,7 +3,7 @@ import CheckoutSidebar from "../../components/CheckoutSidebar";
 import Header from "../../components/Header";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
-import emptyCart from "../../assets/images/empty-cart.png";
+import emptyCartImg from "../../assets/images/empty-cart.png";
 import Footer from "../../components/Footer";
 
 const Cart = () => {
@@ -11,7 +11,7 @@ const Cart = () => {
 
   const cartEmpty = (
     <div className="empty-cart-container">
-      <img src={emptyCart} alt="empty cart" />
+      <img src={emptyCartImg} alt="empty cart" />
     </div>
   );
 
