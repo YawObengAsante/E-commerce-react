@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
 const Product = ({ item }) => {
@@ -6,20 +6,17 @@ const Product = ({ item }) => {
   // destructure item
   const { id, image, category, title, price } = item;
 
-  const itemInCart = ()=>{
-    const cartItem = cart.find(item => item.id === id)
+  const itemInCart = () => {
+    const cartItem = cart.find((item) => item.id === id);
     if (cartItem) {
       if (item.id === id) {
-        const isInCart = cart.map(item => {
-          return item.isInCart
-        })
-        return isInCart
+        const isInCart = cart.map((item) => {
+          return item.isInCart;
+        });
+        return isInCart;
       }
     }
-  }
-
-
-
+  };
 
   return (
     <div className="item-card" key={id}>
@@ -42,8 +39,6 @@ const Product = ({ item }) => {
           Add to Cart
         </button>
       )}
-
-      {/* <button className="remove-button">Remove from Cart</button> */}
     </div>
   );
 };

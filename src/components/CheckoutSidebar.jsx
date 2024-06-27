@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const CheckoutSidebar = () => {
-  const {total} = useContext(CartContext)
+  const { total } = useContext(CartContext);
 
   return (
     <aside>
@@ -19,9 +19,7 @@ const CheckoutSidebar = () => {
         <img src="../../assests/icons/info.svg" alt="info" width="20px" />
       </div>
       <select name="delivery" id="delivery">
-        <option defaultValue="standard">
-          Standard Delivery
-        </option>
+        <option defaultValue="standard">Standard Delivery</option>
         <option value="express">Express Delivery</option>
       </select>
       <button className="checkOutBtn">Check Out</button>

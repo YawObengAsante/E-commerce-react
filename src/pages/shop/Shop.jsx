@@ -15,6 +15,11 @@ export default function Shop() {
   const card = filteredProducts.map((item) => {
     return <Product item={item} key={item.id} />;
   });
-
-  return <section>{card}</section>;
+  
+  return (
+    <>
+    <h1>Shop</h1><br/>
+    <section>{card}</section>;
+    </>
+  )
 }
