@@ -15,8 +15,10 @@ import RootLayout from "./layouts/RootLayout";
 import Shop from "./pages/shop/Shop";
 import Cart from "./pages/cart/Cart";
 import ProtectedRoute from "./pages/cart/ProtectedRoute";
-import FakestoreError from "./FakestoreError";
 import WhatsNew from "./pages/shop/WhatsNew";
+
+// Error Routes
+import FakestoreError from "./FakestoreError";
 
 // Context Providers
 import ShopContextProvider from "./context/ShopContext";
@@ -30,7 +32,7 @@ const router = createBrowserRouter(
         element={<RootLayout />}
         errorElement={<FakestoreError />}
       >
-        <Route index element={<Shop />} />
+        <Route index element={<Shop />} errorElement={<FakestoreError />} />
         <Route path="whatsnew" element={<WhatsNew />} />
       </Route>
       <Route element={<ProtectedRoute />}>
@@ -43,10 +45,10 @@ const router = createBrowserRouter(
 function App() {
   return (
     <KindeProvider
-      clientId="87eb58098ab447d5b83a39b61cd94a62"
-      domain="https://yawobeng.kinde.com"
-      redirectUri="http://localhost:5173"
-      logoutUri="http://localhost:5173"
+      clientId={import.meta.env.VITE_CLIENTID}
+      domain={import.meta.env.VITE_DOMAIN}
+      redirectUri={import.meta.env.VITE_REDIRECTURI}
+      logoutUri={import.meta.env.VITE_LOGOUTURI}
     >
       <CartContextProvider>
         <ShopContextProvider>

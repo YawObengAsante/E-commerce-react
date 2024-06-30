@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import ProtectedRoute from "../pages/cart/ProtectedRoute";
 
 // Create context
 export const CartContext = createContext();
@@ -10,6 +12,8 @@ const CartContextProvider = ({ children }) => {
   const [itemAmount, setItemAmount] = useState(0);
   // total price state
   const [total, setTotal] = useState(0);
+  // auth context
+  const {isAuthenticated} = useKindeAuth()
 
   // update total price
   useEffect(() => {
@@ -17,7 +21,7 @@ const CartContextProvider = ({ children }) => {
       return accumulator + currentItem.price * currentItem.amount;
     }, 0);
     setTotal(total);
-  });
+  }, [cart]);
 
   // update item amount
   useEffect(() => {

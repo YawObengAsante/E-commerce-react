@@ -1,5 +1,6 @@
 const Footer = () => {
   return (
+    <div className="container">
     <footer>
       <p>LIVE WITH US FOR A BETTER SHOPPING</p>
       <div className="footer-contactUs">CONTACT US</div>
@@ -9,6 +10,7 @@ const Footer = () => {
         <p>socials</p>
       </div>
     </footer>
+    </div>
   );
 };
 

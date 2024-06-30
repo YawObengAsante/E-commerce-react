@@ -1,17 +1,17 @@
 import { CartContext } from "../context/CartContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const CartItem = ({ item }) => {
   const { removeFromCart, increaseAmount, decreaseAmount } =
     useContext(CartContext);
   // destructure item
-  const { image, price, amount, id } = item;
+  const {title, image, price, amount, id } = item;
 
   return (
     <article className="cart-card">
       <div className="img-and-itemName">
         <img src={image} />
-        <p>{item.title}</p>
+        <p>{title}</p>
       </div>
 
       <div className="item-quantity">

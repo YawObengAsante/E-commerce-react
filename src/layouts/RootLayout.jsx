@@ -10,8 +10,10 @@ const RootLayout = () => {
       <Header />
       <HeadDisplay />
       <AddInfo />
-      <div className="shop-display-section">
-        <Outlet />
+      <div className="container">
+        <div className="shop-display-section">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </>
