@@ -23,6 +23,7 @@ import FakestoreError from "./FakestoreError";
 // Context Providers
 import ShopContextProvider from "./context/ShopContext";
 import CartContextProvider from "./context/CartContext";
+import SidebarContextProvider from "./context/SidebarContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,9 +52,11 @@ function App() {
       logoutUri={import.meta.env.VITE_LOGOUTURI}
     >
       <CartContextProvider>
-        <ShopContextProvider>
-          <RouterProvider router={router} />;
-        </ShopContextProvider>
+        <SidebarContextProvider>
+          <ShopContextProvider>
+            <RouterProvider router={router} />;
+          </ShopContextProvider>
+        </SidebarContextProvider>
       </CartContextProvider>
     </KindeProvider>
   );

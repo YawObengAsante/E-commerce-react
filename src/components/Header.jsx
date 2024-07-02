@@ -4,10 +4,12 @@ import menuIcon from "../assets/icons/list.svg";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import { SidebarContext } from "../context/SidebarContext";
 
 const Header = () => {
   const { itemAmount } = useContext(CartContext);
-  const { login, register, logout, isAuthenticated } = useKindeAuth();
+  const { register, logout, isAuthenticated } = useKindeAuth();
+  const {handleOpen} = useContext(SidebarContext)
 
   return (
     <div className="container">
@@ -43,6 +45,7 @@ const Header = () => {
             alt="menu icon"
             width={30}
             height={30}
+            onClick={()=>handleOpen()}
           />
         </div>
       </header>

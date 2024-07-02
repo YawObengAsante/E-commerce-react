@@ -29,7 +29,7 @@ const Cart = () => {
         {itemAmount === 0 ? cartEmpty : cartNotEmpty}
         <CheckoutSidebar />
       </main>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 };
