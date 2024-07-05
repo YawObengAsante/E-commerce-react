@@ -2,10 +2,11 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, increaseAmount, decreaseAmount } =
-    useContext(CartContext);
   // destructure item
   const {title, image, price, amount, id } = item;
+  
+  const { removeFromCart, increaseAmount, decreaseAmount } =
+    useContext(CartContext);
 
   return (
     <article className="cart-card">

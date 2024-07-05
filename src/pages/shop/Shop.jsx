@@ -6,21 +6,22 @@ export default function Shop() {
   // get products from shop context
   const { products } = useContext(ShopContext);
 
-  const filteredProducts = products.filter((item) => {
+  const filteredProducts = products.filter((product) => {
     return (
-      item.category === "men's clothing" || item.category === "women's clothing"
+      product.category === "men's clothing" ||
+      product.category === "women's clothing"
     );
   });
 
-  const card = filteredProducts.map((item) => {
-    return <Product item={item} key={item.id} />;
+  const card = filteredProducts.map((product) => {
+    return <Product product={product} key={product.id} />;
   });
 
   return (
     <>
       <h1>Shop</h1>
       <br />
-      <section>{card}</section>;
+      <section>{card}</section>
     </>
   );
 }

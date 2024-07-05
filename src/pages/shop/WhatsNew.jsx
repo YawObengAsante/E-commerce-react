@@ -5,12 +5,14 @@ import Product from "../../components/Product";
 const WhatsNew = () => {
   const { products } = useContext(ShopContext);
 
-  const filteredProducts = products.filter((item) => {
-    return item.category === "jewelery" || item.category === "electronics";
+  const filteredProducts = products.filter((product) => {
+    return (
+      product.category === "jewelery" || product.category === "electronics"
+    );
   });
 
-  const cards = filteredProducts.map((item) => {
-    return <Product item={item} key={item.id} />;
+  const cards = filteredProducts.map((product) => {
+    return <Product product={product} key={product.id} />;
   });
   return (
     <>
